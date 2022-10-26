@@ -38,29 +38,36 @@ const pecas = {
 controle.forEach( (elemento) =>{
     elemento.addEventListener("click", (evento) => {
         manipulaDados(evento.target.dataset.controle, evento.target.parentNode);
-        atualizaEstatisticas(evento.target.dataset.peca);
+        atualizaEstatisticas(evento.target.dataset.peca,evento.target.dataset.controle);
     })
 });
 
-
 function manipulaDados(operacao, controle){
     const peca = controle.querySelector("[data-contador]");
-    
+  
     if(operacao ==="-" && peca.value > 0){
         peca.value = parseInt(peca.value) - 1;
     }
     if (operacao === "+" && peca.value !== 0) {
         peca.value = parseInt(peca.value) + 1;
     }
-        
 }
 
-function atualizaEstatisticas(peca){
+function atualizaEstatisticas(peca, conta){
+
     estatisticas.forEach( (elemento) => {
-        elemento.textContent = parseInt(elemento.textContent) +   (pecas[peca][elemento.dataset.estatistica]);
+        if(conta === "+" ){
+            elemento.textContent = parseInt(elemento.textContent) + pecas[peca][elemento.dataset.estatistica];
+        }else{
+            elemento.textContent = parseInt(elemento.textContent) - pecas[peca][elemento.dataset.estatistica];
+        }
+
     });
 };
 
+function trocaImagem(cor){
+    document.querySelector(".robo").src="img/Robotron 2000 - " + cor + ".png";
+ }
 
 
 

@@ -219,6 +219,18 @@ main {
         margin: 5vh auto;
     }
 }
+/* Mudança de Cor do Robotron */
+.alterar {
+    margin: 2px;
+    width: 200px;
+}
+
+.botoes {
+   position: relative;
+   right: 5%;
+   bottom: 10%;
+   display: flex;
+}
 
 @media screen and (max-width: 1200px) {
     body { 
